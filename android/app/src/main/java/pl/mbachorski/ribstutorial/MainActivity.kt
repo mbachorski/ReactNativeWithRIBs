@@ -1,5 +1,6 @@
 package pl.mbachorski.ribstutorial
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -7,20 +8,16 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.provider.Settings
 import android.view.KeyEvent
-import android.view.ViewGroup
 import com.facebook.react.ReactInstanceManager
 import com.facebook.react.ReactRootView
 import com.facebook.react.common.LifecycleState
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 import com.facebook.react.shell.MainReactPackage
-import com.uber.rib.core.RibActivity
-import com.uber.rib.core.ViewRouter
-import pl.mbachorski.ribstutorial.rib.RootBuilder
 
 
 private const val OVERLAY_PERMISSION_REQ_CODE = 1  // Choose any value
 
-class MainActivity : RibActivity(), DefaultHardwareBackBtnHandler {
+class MainActivity : Activity(), DefaultHardwareBackBtnHandler {
 
     private var mReactRootView: ReactRootView? = null
     private var mReactInstanceManager: ReactInstanceManager? = null
@@ -56,14 +53,14 @@ class MainActivity : RibActivity(), DefaultHardwareBackBtnHandler {
         setContentView(mReactRootView)
     }
 
-    override fun createRouter(parentViewGroup: ViewGroup): ViewRouter<*, *, *> {
-
-        val appComponent = App.app.getAppComponent()
-        appComponent.provideSimpleMessageShower().showMessage("TEST")
-
-        val rootBuilder = RootBuilder(appComponent)
-        return rootBuilder.build(parentViewGroup)
-    }
+//    override fun createRouter(parentViewGroup: ViewGroup): ViewRouter<*, *, *> {
+//
+//        val appComponent = App.app.getAppComponent()
+//        appComponent.provideSimpleMessageShower().showMessage("TEST")
+//
+//        val rootBuilder = RootBuilder(appComponent)
+//        return rootBuilder.build(parentViewGroup)
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
